@@ -1,16 +1,16 @@
 import { IndicatorSvgSelector } from '../../assets/icons/indicators/IndicatorSvgSelector';
 import Cloud from '../../assets/images/cloud.png';
-import { Days } from '../../components';
 import {
   getCityTime,
   getCurrentDay,
+  getCurrentDayName,
   getCurrentHour,
   getCurrentMonthNumber,
   windSpeedToKm,
 } from '../../helpers/dataFormat';
 import { useCustomSelector } from '../../hooks/store';
 import { selectCurrentWeatherData } from '../../store/selectors';
-import { IHourly } from '../../types/weather';
+import { IDaily, IHourly } from '../../types/weather';
 
 export const Home = () => {
   const { weather, oneCallWeather } = useCustomSelector(
@@ -88,42 +88,62 @@ export const Home = () => {
       <div className='home__hourly-weather hourly-weather'>
         <h2 className='hourly-weather__title'>Ежечасно</h2>
         <div className='hourly__items'>
-          {oneCallWeather.hourly.map((obj: IHourly['hourly'], i) => (
-            <div key={i} className='hourly__item item-hourly'>
-              <h5 className='item-hourly__date'>
-                {getCurrentDay(obj.dt, oneCallWeather.timezone_offset)}.
-                {getCurrentMonthNumber(obj.dt)}
-              </h5>
-              <h4 className='item-hourly__time'>
-                {' '}
-                {getCurrentHour(obj.dt, oneCallWeather.timezone_offset)}:00
-              </h4>
-              <img
-                src={`https://openweathermap.org/img/wn/${obj.weather[0].icon}@2x.png`}
-                alt='weather icon'
-              />
-              <span className='item-hourly__wind'>{`${Math.round(
-                windSpeedToKm(obj.wind_speed)
-              )} км/ч`}</span>
-              <span className='item-hourly__degrees'>
-                {Math.round(obj.temp)}
-              </span>
-            </div>
-          ))}
+          {oneCallWeather.hourly
+            .slice(1, 26)
+            .map((obj: IHourly['hourly'], i) => (
+              <div key={i} className='hourly__item item-hourly'>
+                <h5 className='item-hourly__date'>
+                  {`${getCurrentDay(
+                    obj.dt,
+                    oneCallWeather.timezone_offset
+                  )}.${getCurrentMonthNumber(obj.dt)}`}
+                </h5>
+                <h4 className='item-hourly__time'>
+                  {' '}
+                  {`${getCurrentHour(
+                    obj.dt,
+                    oneCallWeather.timezone_offset
+                  )}:00`}
+                </h4>
+                <div className='item-hourly__image-wrapper'>
+                  <img
+                    src={`https://openweathermap.org/img/wn/${obj.weather[0].icon}@2x.png`}
+                    alt='weather icon'
+                  />
+                </div>
+                <span className='item-hourly__wind'>{`${Math.round(
+                  windSpeedToKm(obj.wind_speed)
+                )} км/ч`}</span>
+                <span className='item-hourly__degrees'>
+                  {`${Math.round(obj.temp)}°`}
+                </span>
+              </div>
+            ))}
         </div>
       </div>
       <div className='home__daily-weather daily-weather'>
         <h2 className='daily-weather__title'>Ежедневно</h2>
         <div className='daily__items'>
-          <div className='daily__item item-daily'>
-            <h5 className='item-daily__date'>20.02</h5>
-            <h4 className='item-daily__day'>Monday</h4>
-            <img src='' alt='' />
-            <span className='item-daily__degrees'>6</span>
-          </div>
+          {oneCallWeather.daily.slice(1).map((obj: IDaily['daily'], i) => (
+            <div key={i} className='daily__item item-daily'>
+              <h5 className='item-daily__date'>{`${getCurrentDay(
+                obj.dt,
+                oneCallWeather.timezone_offset
+              )}.${getCurrentMonthNumber(obj.dt)}`}</h5>
+              <h4 className='item-daily__day'>{getCurrentDayName(obj.dt)}</h4>
+              <div className='item-daily__image-wrapper'>
+                <img
+                  src={`https://openweathermap.org/img/wn/${obj.weather[0].icon}@2x.png`}
+                  alt='weather icon'
+                />
+              </div>
+              <span className='item-daily__degrees'>
+                {`${Math.round(obj.temp.max)}°`}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
-      <Days />
     </div>
   );
 };

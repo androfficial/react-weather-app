@@ -1,3 +1,15 @@
+export const getCurrentDayName = (unixDate: number): string => {
+  const day = new Date(unixDate * 1000);
+  if (day.getDay() === 0) return 'Воскресенье';
+  if (day.getDay() === 1) return 'Понедельник';
+  if (day.getDay() === 2) return 'Вторник';
+  if (day.getDay() === 3) return 'Среда';
+  if (day.getDay() === 4) return 'Четверг';
+  if (day.getDay() === 5) return 'Пятница';
+  if (day.getDay() === 6) return 'Суббота';
+  return '';
+};
+
 const addZero = (num: number): string | number => {
   if (num < 10) return `0${num}`;
   return num;

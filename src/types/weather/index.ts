@@ -8,12 +8,18 @@ export interface IState {
 
 export interface IDaily {
   daily: {
+    clouds: number;
+    dew_point: number;
     dt: number;
-    sunrise: number;
-    sunset: number;
+    feels_like: { day: number; night: number; eve: number; morn: number };
+    humidity: number;
+    moon_phase: number;
     moonrise: number;
     moonset: number;
-    moon_phase: number;
+    pop: number;
+    pressure: number;
+    sunrise: number;
+    sunset: number;
     temp: {
       day: number;
       min: number;
@@ -22,30 +28,18 @@ export interface IDaily {
       eve: number;
       morn: number;
     };
-    feels_like: {
-      day: number;
-      night: number;
-      eve: number;
-      morn: number;
-    };
-    pressure: number;
-    humidity: number;
-    dew_point: number;
-    wind_speed: number;
-    wind_deg: number;
-    wind_gust: number;
+    uvi: number;
     weather: [
       {
-        id: number;
-        main: string;
         description: string;
         icon: string;
+        id: number;
+        main: string;
       }
     ];
-    clouds: number;
-    pop: number;
-    snow: number;
-    uvi: number;
+    wind_deg: number;
+    wind_gust: number;
+    wind_speed: number;
   };
 }
 
