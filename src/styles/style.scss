@@ -1,0 +1,38 @@
+/* stylelint-disable no-invalid-position-at-import-rule */
+
+// === <NORMALIZE> ====================================================
+@import '~normalize.css';
+
+// === <ОБНУЛЕНИЯ> ====================================================
+@import 'blocks/null';
+
+// === <ПЕРЕМЕННЫЕ> ===================================================
+@import 'blocks/variables';
+
+// === <ШРИФТЫ> =======================================================
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+body {
+  position: relative;
+  font-family: 'Montserrat', sans-serif;
+  background: var(#{--body-background-default});
+}
+
+// === <КОНТЕЙНЕР> =====================================================
+.container {
+  max-width: 1230px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+// <ПОДКЛЮЧЕНИЕ ГОТОВЫХ КЛАССОВ>========================================
+@import 'blocks/ui';
+
+// === <ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ> =================
+@import 'blocks/header';
+@import 'pages/home';
+
+// === <ОСНОВНОЙ БЛОК> =================================================
+.page {
+  padding: 20px 0;
+}

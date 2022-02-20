@@ -1,0 +1,295 @@
+.home {
+  // .home__wrapper
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+  }
+  // .home__this-day
+  &__this-day {
+    width: 100%;
+    max-width: 400px;
+  }
+  // .home__this-day-info
+  &__this-day-info {
+    position: relative;
+    width: 100%;
+    max-width: 750px;
+    padding: 40px;
+    overflow: hidden;
+    background: var(#{--components-background-default});
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+  }
+  // .home__days
+  &__days {
+  }
+  // .home__hourly-weather
+  &__hourly-weather {
+  }
+  // .home__daily-weather
+  &__daily-weather {
+  }
+}
+.this-day {
+  padding: 20px;
+  background: var(#{--components-background-default});
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  // .this-day__top
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 30px;
+    img {
+      display: block;
+      width: 119px;
+      height: 119px;
+      object-fit: cover;
+    }
+  }
+  // .this-day__wrapper
+  &__wrapper {
+  }
+  // .this-day__temp
+  &__temp {
+    font-size: 96px;
+    font-weight: 500;
+    color: $primary-color;
+  }
+  // .this-day__name
+  &__name {
+    font-size: 40px;
+    color: var(#{--text-color-default});
+  }
+  // .this-day__bottom
+  &__bottom {
+    .this-day__time,
+    .this-day__city {
+      font-size: 25px;
+      color: $base-color;
+    }
+  }
+  // .this-day__time
+  &__time {
+    &:not(:last-child) {
+      margin-bottom: 5px;
+    }
+  }
+  // .this-day__city
+  &__city {
+  }
+}
+.this-day-info {
+  // .this-day-info__items
+  &__items {
+  }
+  // .this-day-info__cloud-img
+  &__cloud-img {
+    position: absolute;
+    top: 0;
+    right: -70px;
+    pointer-events: none;
+  }
+}
+.item-this-day {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+  // .item-this-day__indicator, .item-this-day__indicator-name
+  &__indicator,
+  &__indicator-name {
+    margin-right: 20px;
+  }
+  // .item-this-day__indicator
+  &__indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 1px 4px 10px -1px rgba(71, 147, 255, 0.2);
+  }
+  // .item-this-day__indicator-name, .item-this-day__indicator-value
+  &__indicator-name,
+  &__indicator-value {
+    font-size: 14px;
+  }
+  // .item-this-day__indicator-name
+  &__indicator-name {
+    color: $base-color;
+  }
+  // .item-this-day__indicator-value
+  &__indicator-value {
+    color: var(#{--text-color-default});
+  }
+}
+.hourly-weather {
+  // .hourly-weather__title
+  &__title {
+  }
+}
+.hourly {
+  // .hourly__items
+  &__items {
+    display: grid;
+    grid-template: auto/repeat(auto-fill, minmax(149px, auto));
+    grid-auto-flow: row;
+    column-gap: 15px;
+    width: 100%;
+    padding: 20px;
+    overflow-x: auto;
+    background-color: var(#{--components-background-default});
+    border-radius: 0 0 $border-radius $border-radius;
+    box-shadow: $box-shadow;
+  }
+  // .hourly__item
+  &__item {
+    display: flex;
+    flex-direction: column;
+    width: 149px;
+    padding: 10px;
+    cursor: pointer;
+    background-color: var(#{--card-background-default});
+    border-radius: 10px;
+    transition: 0.3s;
+  }
+}
+.item-hourly {
+  // .item-hourly__date
+  &__date {
+    margin-bottom: 7px;
+    font-size: 18px;
+    color: var(#{--text-color-default});
+  }
+  // .item-hourly__time
+  &__time {
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: $base-color;
+  }
+  // .item-hourly__wind
+  &__wind {
+    margin-bottom: 6px;
+    font-size: 13px;
+    color: $base-color;
+  }
+  // .item-hourly__degrees
+  &__degrees {
+    font-size: 13px;
+    color: $base-color;
+  }
+}
+.daily-weather {
+  // .daily-weather__title
+  &__title {
+  }
+}
+.daily {
+  // .daily__items
+  &__items {
+    display: grid;
+    grid-template: auto/repeat(auto-fill, minmax(149px, auto));
+    grid-auto-flow: row;
+    column-gap: 15px;
+    width: 100%;
+    padding: 20px;
+    overflow-x: auto;
+    background-color: var(#{--components-background-default});
+    border-radius: 0 0 $border-radius $border-radius;
+    box-shadow: $box-shadow;
+  }
+  // .daily__item
+  &__item {
+    display: flex;
+    flex-direction: column;
+    width: 149px;
+    padding: 10px;
+    cursor: pointer;
+    background-color: var(#{--card-background-default});
+    border-radius: 10px;
+    transition: 0.3s;
+  }
+}
+.item-daily {
+  // .item-daily__date
+  &__date {
+    margin-bottom: 7px;
+    font-size: 18px;
+    color: var(#{--text-color-default});
+  }
+  // .item-daily__day
+  &__day {
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: $base-color;
+  }
+  // .item-daily__degrees
+  &__degrees {
+    font-size: 13px;
+    color: $base-color;
+  }
+}
+.days {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px;
+  background-color: var(#{--components-background-default});
+  border-radius: 0 0 $border-radius $border-radius;
+  box-shadow: $box-shadow;
+  // .days__card
+  &__card {
+  }
+}
+.card-days {
+  display: flex;
+  flex-direction: column;
+  width: 149px;
+  padding: 10px;
+  cursor: pointer;
+  background-color: var(#{--card-background-default});
+  border-radius: 10px;
+  transition: 0.3s;
+  // .card-days__day
+  &__day {
+    margin-bottom: 7px;
+    font-size: 18px;
+    color: var(#{--text-color-default});
+  }
+  // .card-days__day-info
+  &__day-info {
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: $base-color;
+  }
+  // .card-days__img
+  &__img {
+    margin-bottom: 12px;
+  }
+  // .card-days__temp-day
+  &__temp-day {
+    font-size: 18px;
+    color: var(#{--text-color-default});
+  }
+  // .card-days__temp-night
+  &__temp-night {
+    margin-bottom: 6px;
+    font-size: 13px;
+    color: $base-color;
+  }
+  // .card-days__info
+  &__info {
+    font-size: 13px;
+    color: $base-color;
+  }
+}
