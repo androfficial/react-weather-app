@@ -53,6 +53,7 @@ yarn run build
 - Redux Toolkit
 - TypeScript
 - Axios
+- ClassNames
 - SCSS
 
 ---
