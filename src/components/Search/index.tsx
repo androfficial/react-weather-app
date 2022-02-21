@@ -12,13 +12,9 @@ import {
 
 interface ISearchProps {
   message: string;
-  response: {
-    status: number;
-    message: string;
-  };
 }
 
-export const Search = ({ message, response }: ISearchProps) => {
+export const Search = ({ message }: ISearchProps) => {
   const dispatch = useCustomDispatch();
   const { theme } = useTheme();
   const [value, setValue] = useState<string>('');
@@ -61,13 +57,6 @@ export const Search = ({ message, response }: ISearchProps) => {
           <GlobalSvgSelector id='search' />
         </button>
       </div>
-      {response.message === 'city not found' && (
-        <div className='search__error error-search'>
-          <strong className='error-search__text'>
-            Не удалось найти такой город
-          </strong>
-        </div>
-      )}
     </div>
   );
 };

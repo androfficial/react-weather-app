@@ -54,6 +54,7 @@ const initialState: IState = {
     access: true,
     message: '',
   },
+  showModal: false,
   isLoading: true,
   response: {} as IResponse,
 };
@@ -75,6 +76,9 @@ export const currentWeatherSlice = createSlice({
     setLocation: (state, action: PayloadAction<ILocation>) => {
       state.isLoading = false;
       state.location = action.payload;
+    },
+    setShowModal: (state, action: PayloadAction<boolean>) => {
+      state.showModal = action.payload;
     },
     setIsLoading: (state, action: PayloadAction<boolean>) => {
       state.isLoading = action.payload;
@@ -100,6 +104,9 @@ export const currentWeatherSlice = createSlice({
       state,
       action: PayloadAction<AxiosResponse<IBadResponse>>
     ) => {
+      const cityNotFound = action.payload.data.message === 'city not found';
+
+      state.showModal = cityNotFound;
       state.isLoading = false;
       state.response = {
         status: action.payload.status,
@@ -109,7 +116,7 @@ export const currentWeatherSlice = createSlice({
   },
 });
 
-export const { setCurrentWeather, setLocation, setIsLoading } =
+export const { setCurrentWeather, setLocation, setShowModal, setIsLoading } =
   currentWeatherSlice.actions;
 
 export default currentWeatherSlice.reducer;

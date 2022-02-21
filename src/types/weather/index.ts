@@ -2,8 +2,49 @@ export interface IState {
   weather: IWeather;
   oneCallWeather: IOneCall;
   location: ILocation;
+  showModal: boolean;
   isLoading: boolean;
   response: IResponse;
+}
+
+export interface IWeather {
+  base: string;
+  clouds: { all: number };
+  cod: number;
+  coord: { lon: number; lat: number };
+  dt: number;
+  id: number;
+  main: {
+    feels_like: number;
+    humidity: number;
+    pressure: number;
+    temp: number;
+    temp_max: number;
+    temp_min: number;
+  };
+  name: string;
+  sys: {
+    country: string;
+    id: number;
+    sunrise: number;
+    sunset: number;
+    type: number;
+  };
+  timezone: number;
+  visibility: number;
+  weather: [
+    {
+      description: string;
+      icon: string;
+      id: number;
+      main: string;
+    }
+  ];
+  wind: {
+    deg: number;
+    gust: number;
+    speed: number;
+  };
 }
 
 export interface IDaily {
@@ -69,108 +110,9 @@ export interface IHourly {
   };
 }
 
-export interface IWeather {
-  base: string;
-  clouds: { all: number };
-  cod: number;
-  coord: { lon: number; lat: number };
-  dt: number;
-  id: number;
-  main: {
-    feels_like: number;
-    humidity: number;
-    pressure: number;
-    temp: number;
-    temp_max: number;
-    temp_min: number;
-  };
-  name: string;
-  sys: {
-    country: string;
-    id: number;
-    sunrise: number;
-    sunset: number;
-    type: number;
-  };
-  timezone: number;
-  visibility: number;
-  weather: [
-    {
-      description: string;
-      icon: string;
-      id: number;
-      main: string;
-    }
-  ];
-  wind: {
-    deg: number;
-    gust: number;
-    speed: number;
-  };
-}
-
 export interface IOneCall {
-  daily: [
-    {
-      clouds: number;
-      dew_point: number;
-      dt: number;
-      feels_like: { day: number; night: number; eve: number; morn: number };
-      humidity: number;
-      moon_phase: number;
-      moonrise: number;
-      moonset: number;
-      pop: number;
-      pressure: number;
-      sunrise: number;
-      sunset: number;
-      temp: {
-        day: number;
-        min: number;
-        max: number;
-        night: number;
-        eve: number;
-        morn: number;
-      };
-      uvi: number;
-      weather: [
-        {
-          description: string;
-          icon: string;
-          id: number;
-          main: string;
-        }
-      ];
-      wind_deg: number;
-      wind_gust: number;
-      wind_speed: number;
-    }
-  ];
-  hourly: [
-    {
-      clouds: number;
-      dew_point: number;
-      dt: number;
-      feels_like: number;
-      humidity: number;
-      pop: number;
-      pressure: number;
-      temp: number;
-      uvi: number;
-      visibility: number;
-      weather: [
-        {
-          description: string;
-          icon: string;
-          id: number;
-          main: string;
-        }
-      ];
-      wind_deg: number;
-      wind_gust: number;
-      wind_speed: number;
-    }
-  ];
+  daily: IDaily['daily'][];
+  hourly: IHourly['hourly'][];
   lat: number;
   lon: number;
   timezone: string;

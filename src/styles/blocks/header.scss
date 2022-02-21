@@ -38,6 +38,9 @@
   }
   // .header__change-theme
   &__change-theme {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
   // .header__logo
   &__logo {
@@ -58,12 +61,6 @@
     @media (max-width: 480px) {
       font-size: 18px;
     }
-  }
-  // .header__change-theme
-  &__change-theme {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
   }
   // .header__input-wrapper
   &__input-wrapper {
@@ -90,11 +87,5 @@
   &__btn {
     width: 20px;
     height: 20px;
-  }
-  // .header__error
-  &__error {
-    position: absolute;
-    top: calc(100% + 8px);
-    right: 0;
   }
 }

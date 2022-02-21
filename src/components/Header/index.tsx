@@ -3,9 +3,8 @@ import { ChangeEvent, KeyboardEvent, useState } from 'react';
 
 import { GlobalSvgSelector } from '../../assets/icons/global/GlobalSvgSelector';
 import { Theme } from '../../context/ThemeContext';
-import { useCustomDispatch, useCustomSelector } from '../../hooks/store';
+import { useCustomDispatch } from '../../hooks/store';
 import { useTheme } from '../../hooks/useTheme';
-import { selectCurrentWeatherData } from '../../store/selectors';
 import {
   fetchCurrentWeather,
   setIsLoading,
@@ -13,7 +12,6 @@ import {
 
 export const Header = () => {
   const dispatch = useCustomDispatch();
-  const { response } = useCustomSelector(selectCurrentWeatherData);
   const { theme, changeTheme } = useTheme();
   const [value, setValue] = useState<string>('');
 
@@ -79,13 +77,6 @@ export const Header = () => {
             <GlobalSvgSelector id='search' />
           </button>
         </div>
-        {response.message === 'city not found' && (
-          <div className='header__error error-search'>
-            <strong className='error-search__text'>
-              Не удалось найти такой город
-            </strong>
-          </div>
-        )}
       </div>
     </header>
   );
