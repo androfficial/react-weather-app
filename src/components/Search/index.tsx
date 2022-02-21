@@ -4,7 +4,7 @@ import { GlobalSvgSelector } from '../../assets/icons/global/GlobalSvgSelector';
 import { useCustomDispatch } from '../../hooks/store';
 import {
   fetchCurrentWeather,
-  toggleIsLoading,
+  setIsLoading,
 } from '../../store/slices/currentWeather';
 
 interface ISearchProps {
@@ -25,14 +25,14 @@ export const Search = ({ message, response }: ISearchProps) => {
 
   const onKeyPress = (e: KeyboardEvent<HTMLInputElement>): void => {
     if (value.trim() && e.key === 'Enter') {
-      dispatch(toggleIsLoading(true));
+      dispatch(setIsLoading(true));
       dispatch(fetchCurrentWeather({ city: value }));
     }
   };
 
   const onSearchBtnClick = (): void => {
     if (value.trim()) {
-      dispatch(toggleIsLoading(true));
+      dispatch(setIsLoading(true));
       dispatch(fetchCurrentWeather({ city: value }));
     }
   };

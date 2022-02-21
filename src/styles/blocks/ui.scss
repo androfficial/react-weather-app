@@ -2,6 +2,10 @@
   svg {
     width: 65px;
     height: 65px;
+    @media (max-width: 480px) {
+      width: 50px;
+      height: 50px;
+    }
   }
 }
 .preloader {
@@ -51,6 +55,9 @@
     &:not(:last-child) {
       margin-bottom: 12px;
     }
+    @media (max-width: 480px) {
+      font-size: 18px;
+    }
   }
   // .search__input-wrapper
   &__input-wrapper {
@@ -88,5 +95,10 @@
   &__text {
     color: red;
     letter-spacing: 1px;
+  }
+}
+h2 {
+  @media (max-width: 768px) {
+    font-size: 22px !important;
   }
 }

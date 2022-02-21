@@ -1,13 +1,13 @@
 import { AppDispatch } from '../store/index';
 import {
   fetchCurrentWeather,
-  toggleLocation,
+  setLocation,
 } from '../store/slices/currentWeather';
 
 export const locationPermission = (dispatch: AppDispatch): void => {
   if (!navigator.geolocation) {
     dispatch(
-      toggleLocation({
+      setLocation({
         access: false,
         message:
           'Геолокация не поддерживается вашим браузером, укажите свой город',
@@ -28,7 +28,7 @@ export const locationPermission = (dispatch: AppDispatch): void => {
     (error: GeolocationPositionError) => {
       if (error.PERMISSION_DENIED) {
         dispatch(
-          toggleLocation({
+          setLocation({
             access: false,
             message: 'Пожалуйста, введите свой город',
           })

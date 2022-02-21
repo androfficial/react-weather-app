@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import axios, { AxiosError, AxiosResponse } from 'axios';
 
@@ -8,6 +9,7 @@ import {
   ILocation,
   IOneCall,
   IResponse,
+  IState,
   IWeather,
 } from '../../types/weather';
 
@@ -45,7 +47,7 @@ export const fetchCurrentWeather = createAsyncThunk(
   }
 );
 
-const initialState = {
+const initialState: IState = {
   weather: {} as IWeather,
   oneCallWeather: {} as IOneCall,
   location: {
@@ -70,11 +72,11 @@ export const currentWeatherSlice = createSlice({
         message: action.payload.statusText,
       };
     },
-    toggleLocation: (state, action: PayloadAction<ILocation>) => {
+    setLocation: (state, action: PayloadAction<ILocation>) => {
       state.isLoading = false;
       state.location = action.payload;
     },
-    toggleIsLoading: (state, action: PayloadAction<boolean>) => {
+    setIsLoading: (state, action: PayloadAction<boolean>) => {
       state.isLoading = action.payload;
     },
   },
@@ -107,7 +109,7 @@ export const currentWeatherSlice = createSlice({
   },
 });
 
-export const { setCurrentWeather, toggleLocation, toggleIsLoading } =
+export const { setCurrentWeather, setLocation, setIsLoading } =
   currentWeatherSlice.actions;
 
 export default currentWeatherSlice.reducer;

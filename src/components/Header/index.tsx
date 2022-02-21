@@ -8,7 +8,7 @@ import { useTheme } from '../../hooks/useTheme';
 import { selectCurrentWeatherData } from '../../store/selectors';
 import {
   fetchCurrentWeather,
-  toggleIsLoading,
+  setIsLoading,
 } from '../../store/slices/currentWeather';
 
 export const Header = () => {
@@ -23,14 +23,14 @@ export const Header = () => {
 
   const onKeyPress = (e: KeyboardEvent<HTMLInputElement>): void => {
     if (value.trim() && e.key === 'Enter') {
-      dispatch(toggleIsLoading(true));
+      dispatch(setIsLoading(true));
       dispatch(fetchCurrentWeather({ city: value }));
     }
   };
 
   const onSearchBtnClick = (): void => {
     if (value.trim()) {
-      dispatch(toggleIsLoading(true));
+      dispatch(setIsLoading(true));
       dispatch(fetchCurrentWeather({ city: value }));
     }
   };
@@ -47,7 +47,7 @@ export const Header = () => {
         </div>
         <div className='header__title'>React weather</div>
       </div>
-      <div className='header__wrapper'>
+      <div className='header__theme-btn'>
         <button
           onClick={handleChangeTheme}
           className='header__change-theme'
@@ -55,6 +55,8 @@ export const Header = () => {
         >
           <GlobalSvgSelector id='change-theme' />
         </button>
+      </div>
+      <div className='header__wrapper header__wrapper--right'>
         <div
           className={cn(
             'header__input-wrapper',
