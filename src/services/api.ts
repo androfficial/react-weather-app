@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 
-import { IWeather } from '../types/weather';
+import { IOneCall, IWeather } from '../types/weather';
 import { instance } from './config';
 
 export const weatherAPI = {
@@ -17,7 +17,10 @@ export const weatherAPI = {
       },
     });
   },
-  getOneCallWeather(lat?: number, lon?: number) {
+  getOneCallWeather(
+    lat?: number,
+    lon?: number
+  ): Promise<AxiosResponse<IOneCall>> {
     return instance.get(`/onecall?`, {
       params: {
         exclude: 'minutely',
