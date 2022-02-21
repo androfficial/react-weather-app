@@ -1,7 +1,10 @@
+import cn from 'classnames';
 import { ChangeEvent, KeyboardEvent, useState } from 'react';
 
 import { GlobalSvgSelector } from '../../assets/icons/global/GlobalSvgSelector';
+import { Theme } from '../../context/ThemeContext';
 import { useCustomDispatch } from '../../hooks/store';
+import { useTheme } from '../../hooks/useTheme';
 import {
   fetchCurrentWeather,
   setIsLoading,
@@ -17,6 +20,7 @@ interface ISearchProps {
 
 export const Search = ({ message, response }: ISearchProps) => {
   const dispatch = useCustomDispatch();
+  const { theme } = useTheme();
   const [value, setValue] = useState<string>('');
 
   const handleChangeValue = (e: ChangeEvent<HTMLInputElement>): void => {
@@ -38,7 +42,7 @@ export const Search = ({ message, response }: ISearchProps) => {
   };
 
   return (
-    <div className='search'>
+    <div className={cn('search', theme === Theme.DARK && 'dark-theme')}>
       <strong className='search__error-text'>{message}</strong>
       <div className='search__input-wrapper'>
         <input

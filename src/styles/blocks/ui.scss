@@ -46,11 +46,20 @@
   padding: 0 15px;
   text-align: center;
   transform: translate(-50%, -50%);
+  &.dark-theme {
+    .search__input-wrapper {
+      .search__btn {
+        svg {
+          fill: #000;
+        }
+      }
+    }
+  }
   // .search__error-text
   &__error-text {
     font-size: 22px;
     font-weight: 700;
-    color: rgba(#000, 0.95);
+    color: var(--text-color-default);
     letter-spacing: 1px;
     &:not(:last-child) {
       margin-bottom: 12px;
