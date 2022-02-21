@@ -1,4 +1,4 @@
-## :athletic_shoe: React Weather
+## :milky_way: React Weather
 
 ### :link: Installation
 
